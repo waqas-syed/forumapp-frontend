@@ -1,0 +1,46 @@
+﻿<div ng-controller="postsController">
+    <div class="row">
+        <div class="col-sm-2">
+            <button class="btn btn-success" ng-click="addNewPost()">
+                ADD NEW POST
+            </button>
+        </div>
+    </div>
+    <hr />
+
+    <table ng-table="tableParams" class="table">
+        <tr ng-repeat="post in posts">
+            <td data-title="'Title'" data-sortable="'Title'" ng-bind="post.Title"></td>
+            <td data-title="'Description'" data-sortable="'Description'"><del ng-bind="post.Description"></del></td>
+            <td data-title="'Category'" data-sortable="'Category'" ng-bind="post.Category"></td>
+        </tr>
+    </table>
+
+    <!--<table id="mytable" class="table table-bordred table-striped">
+
+        <thead>
+
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Priority</th>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="toDo in toDoList">
+            <td ng-if="!toDo.IsCompleted" ng-bind="toDo.Description"></td>
+            <td ng-if="toDo.IsCompleted"><del ng-bind="toDo.Description"></del></td>
+            <td ng-bind="toDo.DueDate | date:'MM/dd/yyyy'"></td>
+            <td ng-bind="toDo.Priority"></td>
+            <td ng-if="!toDo.IsCompleted">
+                <p data-placement="top" data-toggle="tooltip" title="Edit"><a ui-sref="edit-todo({id:toDo.Id})" class="btn btn-warning btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                </p></td>
+            <td>
+                <p data-placement="top" data-toggle="tooltip" title="Delete"><button confirmed-click="deleteToDo(toDo.Id)" ng-confirm-click="Are you sure you want to delete the ToDo" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button>
+                </p></td>
+            <td ng-if="!toDo.IsCompleted">
+                <p data-placement="top" data-toggle="tooltip" title="Is Completed"><button ng-click="markToDoAsCompleted(toDo.Id)" class="btn btn-info btn-xs" data-title="Mark As Complete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-ok"></span></button>
+                </p></td>
+        </tr>
+        </tbody>
+    </table>-->
+</div>

@@ -83,7 +83,7 @@
                         var hideFromLoggedInUser = next.permissions.hideFromLoggedInUser;
                         if (hideFromLoggedInUser !== undefined && hideFromLoggedInUser != null && hideFromLoggedInUser) {
                             event.preventDefault();
-                            $state.go('post');
+                            $state.go('posts');
                         }
                     }
                     if (!authService.authentication.isAuth) {
