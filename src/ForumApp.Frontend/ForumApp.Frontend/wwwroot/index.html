@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/ng-table.css">
+    
+    <link rel="stylesheet" href="assets/css/Site.css"/>
+</head>
+<body>
+
+<div ng-app="app" ng-controller="indexController">
+    <div class="container">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Forum App</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar" ng-if="!isAuthenticated()">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a ui-sref="signup"><span class="glyphicon glyphicon-log-in"></span> Signup</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar" ng-if="isAuthenticated()">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-click="logOut()"><a href=""><span class="glyphicon glyphicon-user"></span> {{authentication.fullName}}</a></li>
+                    <li ng-click="logOut()"><a href=""><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <div class="jumbotron">
+            <div class="container">
+                <div>
+                    <div id="ui-view" class="page-wrapper" ui-view></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+<!--<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>-->
+<script src="lib/angular.js"></script>
+<script src="lib/angular-animate.js"></script>
+<script src="lib/angular-sanitize.js"></script>
+<script src="lib/ui-bootstrap-tpls.js"></script>
+<!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<script src="lib/angular-ui-router.js"></script>
+<script src="lib/angular-local-storage.js"></script>
+    <script src="lib/ng-table.js"></script>
+<script src="app.js"></script>
+<script src="AuthInterceptorService.js"></script>
+<script src="AuthService.js"></script>
+<script src="GlobalService.js"></script>
+<script src="NgConfirmClickDirective.js"></script>
+<script src="ToDoListService.js"></script>
+<script src="IndexController.js"></script>
+<script src="LoginController.js"></script>
+<script src="SignupController.js"></script>
+<script src="ToDoListController.js"></script>
+<script src="ToDoItemController.js"></script>
+</body>
+</html> 
