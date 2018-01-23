@@ -17,10 +17,21 @@ app.controller('postsController', [
             $scope.categories = response;
         }).error(function (error) {
             $scope.errorMessage = "Error while retreiving Categories. Please try again later.";
-        });
-        
+            });
+
+        function truncateText(selector, maxLength) {
+            var element = document.querySelector(selector),
+                truncated = element.innerText;
+
+            if (truncated.length > maxLength) {
+                truncated = truncated.substr(0, maxLength) + '...';
+            }
+            return truncated;
+        }
+
         postsService.getAllPosts().success(function(response) {
             $scope.posts = response;
+            document.querySelector('p').innerText = truncateText('p', 107);
         }).error(function(error) {
             $scope.errorMessage = "Error while retreiving Posts. Please try again later.";
             });
@@ -92,7 +103,6 @@ app.controller('postsController', [
                 }).error(function(error) {
                     $scope.errorMessage = "Error while deleting the said post.";
                 });
-
         }
     }
 ]);
