@@ -11,7 +11,7 @@
     <table ng-table="tableParams" class="table">
         <tr ng-repeat="post in posts">
             <td data-title="'Title'" data-sortable="'Title'" ng-bind="post.Title"></td>
-            <td data-title="'Description'" data-sortable="'Description'"><del ng-bind="post.Description"></del></td>
+            <td data-title="'Description'" data-sortable="'Description'" ng-bind="post.Description"></td>
             <td data-title="'Category'" data-sortable="'Category'" ng-bind="post.Category"></td>
         </tr>
     </table>
