@@ -61,7 +61,7 @@
                     .state("edit-post",
                         {
                             url: "/edit-post?id",
-                            controller: "postsController",
+                            controller: "singlePostController",
                             templateUrl: "/views/edit-post.html",
                             permissions: { redirectForNonLoggedInUser: true }
                         });

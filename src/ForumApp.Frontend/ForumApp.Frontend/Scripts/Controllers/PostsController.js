@@ -34,5 +34,9 @@ app.controller('postsController', [
         $scope.addNewPost = function() {
             $state.go('add-post', {email : $scope.email});
         };
+
+        $scope.getSinglePost = function(id) {
+            $state.go('edit-post', { id: id });
+        }
     }
 ]);
