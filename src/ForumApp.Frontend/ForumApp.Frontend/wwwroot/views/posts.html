@@ -2,12 +2,11 @@
     <div class="row">
         <div class="col-sm-2">
             <button class="btn btn-success" ng-click="addNewPost()">
-                Add New Post
+                ADD NEW POST
             </button>
         </div>
     </div>
-    <hr />
-
+    
     <table ng-table="tableParams" class="table">
         <tr ng-repeat="post in posts">
             <td class="col-md-12 blogShort">
@@ -18,9 +17,9 @@
                         <div class="panel-body post-list-paragraph" ng-bind="post.Description">
                     
                         </div><!-- /panel-body -->
-                        <a style="margin-right: 5px; margin-top: 5px;" ng-if="post.PosterEmail !== email" class="btn btn-blog pull-right marginBottom10" ui-sref="view-post({id:post.Id})">READ MORE</a>
-                        <a style="margin-right: 5px; margin-top: 5px;" ng-if="post.PosterEmail === email" class="btn btn-success pull-right marginBottom10" ui-sref="edit-post({id:post.Id})"><span class="glyphicon glyphicon-pencil"> </span> EDIT</a>
-                        <a style="margin-right: 5px; margin-top: 5px;" ng-if="post.PosterEmail === email" class="btn btn-danger pull-right marginBottom10" confirmed-click="deletePost(post.Id)" ng-confirm-click="Are you sure you want to delete the Post?"><span class="glyphicon glyphicon-trash"> </span> Delete</a>
+                        <a style="margin-right: 5px; margin-top: 7px;" ng-if="post.PosterEmail !== email" class="btn btn-warning pull-right marginBottom10" ui-sref="view-post({id:post.Id})"><span class="glyphicon glyphicon-book"> </span> READ MORE</a>
+                        <a style="margin-right: 5px; margin-top: 7px;" ng-if="post.PosterEmail === email" class="btn btn-success pull-right marginBottom10" ui-sref="edit-post({id:post.Id})"><span class="glyphicon glyphicon-pencil"> </span> EDIT</a>
+                        <a style="margin-right: 5px; margin-top: 7px;" ng-if="post.PosterEmail === email" class="btn btn-danger pull-right marginBottom10" confirmed-click="deletePost(post.Id)" ng-confirm-click="Are you sure you want to delete the Post?"><span class="glyphicon glyphicon-trash"> </span> DELETE</a>
                     </div><!-- /panel panel-default -->
             </td>
             <!--<td data-title="'Title'" data-sortable="'Title'"><a ng-bind="post.Title" ui-sref="view-post({id:post.Id})"></a></td>
