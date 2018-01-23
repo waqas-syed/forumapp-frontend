@@ -15,10 +15,21 @@ app.controller('singlePostController', [
             $scope.post = response;
         }).error(function(error) {
             $scope.errorMessage = "Error while retreving the post. Please try again later";
-        });
+            });
 
-        $scope.getSinglePost = function (post) {
-            $scope.currentPost = post;
+        $scope.updatePost = function () {
+            var post = {
+                Id: $scope.post.Id,
+                Title: $scope.post.Title,
+                Description: $scope.post.Description,
+                Category: $scope.post.Category,
+                Email: $scope.email
+            };
+            postsService.updatePost(post).success(function (response) {
+                $state.go('posts');
+            }).error(function (error) {
+                $scope.errorMessage = "Error while submitting new Post. Please try again later";
+            });
         }
     }
 ]);
