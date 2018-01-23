@@ -5,7 +5,8 @@ var app = angular.module('app');
 app.controller('postsController', [
     '$scope', '$state', '$stateParams', 'postsService', 'NgTableParams', '$filter', 'authService', 'categoriesService',
     function ($scope, $state, $stateParams, postsService, NgTableParams, $filter, authService, categoriesService) {
-    
+
+        $scope.currentPost = {};
         authService.fillAuthData();
         if (authService.authentication.isAuth) {
             $scope.email = authService.authentication.email;
@@ -24,6 +25,7 @@ app.controller('postsController', [
             });
 
         if ($stateParams.id !== null && $stateParams.id !== undefined && $stateParams.id !== "") {
+            $scope.newPost = false;
             postsService.getPost({ postId: $stateParams.id }).success(function (response) {
                 $scope.currentPost = response;
             }).error(function (error) {
@@ -46,18 +48,33 @@ app.controller('postsController', [
         }
 
         $scope.submitNewPost = function () {
-            var post = {
-                Title: $scope.title,
-                Description: $scope.description,
-                Category: $scope.category,
-                Email: $scope.email
-            };
-            postsService.submitNewPost(post).success(function(response) {
-                $state.go('posts');
-            }).error(function(error) {
-                $scope.errorMessage = "Error while submitting new Post. Please try again later";
-            });
-        }
+            if ($scope.newPost) {
+                var post = {
+                    Title: $scope.currentPost.Title,
+                    Description: $scope.currentPost.Description,
+                    Category: $scope.currentPost.Category,
+                    Email: $scope.email
+                };
+                postsService.submitNewPost(post).success(function(response) {
+                    $state.go('posts');
+                }).error(function(error) {
+                    $scope.errorMessage = "Error while submitting new Post. Please try again later";
+                });
+            } else {
+                var updatedPost = {
+                    Id: $scope.currentPost.Id,
+                    Title: $scope.currentPost.Title,
+                    Description: $scope.currentPost.Description,
+                    Category: $scope.currentPost.Category,
+                    Email: $scope.email
+                };
+                postsService.updatePost(updatedPost).success(function (response) {
+                    $state.go('posts');
+                }).error(function (error) {
+                    $scope.errorMessage = "Error while submitting new Post. Please try again later";
+                });
+            }
+        };
         
         $scope.addNewPost = function() {
             $state.go('add-post', {email : $scope.email});

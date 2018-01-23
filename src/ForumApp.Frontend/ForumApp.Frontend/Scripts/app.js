@@ -62,14 +62,14 @@
                         {
                             url: "/add-post",
                             controller: "postsController",
-                            templateUrl: "/views/add-post.html",
+                            templateUrl: "/views/upload-post.html",
                             permissions: { redirectForNonLoggedInUser: true }
                     })
                     .state("edit-post",
                         {
                             url: "/edit-post?id",
-                            controller: "singlePostController",
-                            templateUrl: "/views/edit-post.html",
+                            controller: "postsController",
+                            templateUrl: "/views/upload-post.html",
                             permissions: { redirectForNonLoggedInUser: true }
                         });
             }
