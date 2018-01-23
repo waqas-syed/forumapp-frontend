@@ -3,13 +3,19 @@
 var app = angular.module('app');
 
 app.controller('postsController', [
-    '$scope', '$state', '$stateParams', 'postsService', 'NgTableParams', '$filter', 'authService',
-    function ($scope, $state, $stateParams, postsService, NgTableParams, $filter, authService) {
+    '$scope', '$state', '$stateParams', 'postsService', 'NgTableParams', '$filter', 'authService', 'categoriesService',
+    function ($scope, $state, $stateParams, postsService, NgTableParams, $filter, authService, categoriesService) {
     
         authService.fillAuthData();
         if (authService.authentication.isAuth) {
             $scope.email = authService.authentication.email;
         }
+
+        categoriesService.getAllCategories().success(function (response) {
+            $scope.categories = response;
+        }).error(function (error) {
+            $scope.errorMessage = "Error while retreiving Categories. Please try again later.";
+        });
         
         postsService.getAllPosts().success(function(response) {
             $scope.posts = response;
