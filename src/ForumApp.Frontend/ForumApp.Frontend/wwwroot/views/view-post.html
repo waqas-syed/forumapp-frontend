@@ -2,8 +2,7 @@
     <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a ui-sref="posts()" class="btn btn-warning btn-xs" data-title="Back"><span class="glyphicon glyphicon-arrow-left"></span></a></p></td>
 
 <h2 ng-bind="currentPost.Title"></h2>
-<hr style="color: black;"/>
-<p ng-bind="currentPost.Description"></p>
+<p ng-bind="currentPost.Description" class="paragraph-font-size" style="font-size: 1.2em;"></p>
 
 <div class="row">
     
@@ -13,7 +12,7 @@
                 <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
                 <form ng-submit="addNewComment()">
                     <textarea placeholder="What are your thoughts?" ng-model="commentText"></textarea>
-                    <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Comment</button>
+                    <button type="submit" class="btn btn-success green" style="margin-bottom: 10px;"><i class="fa fa-share"></i> Comment</button>
                 </form>
             </div><!-- Status Upload  -->
         </div><!-- Widget Area -->
