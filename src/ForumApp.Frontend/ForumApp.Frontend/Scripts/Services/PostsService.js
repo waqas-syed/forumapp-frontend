@@ -2,8 +2,8 @@
 
 app.factory('postsService', ['$http', '$q', 'globalService', function ($http, $q, globalService) {
     return {
-        getPostsByEmail: function (searchParameters) {
-            return $http.get(globalService.serverUrl + 'post', { params: searchParameters })
+        getAllPosts: function (searchParameters) {
+            return $http.get(globalService.serverUrl + 'post')
                 .success(function (response) {
                     return response;
                 })

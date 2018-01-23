@@ -10,12 +10,19 @@ app.controller('postsController', [
         if (authService.authentication.isAuth) {
             $scope.email = authService.authentication.email;
         }
+        
+        postsService.getAllPosts().success(function(response) {
+            $scope.posts = response;
+        }).error(function(error) {
+            $scope.errorMessage = "Error while retreiving Posts. Please try again later.";
+        });
 
         $scope.submitNewPost = function () {
             var post = {
                 Title: $scope.title,
                 Description: $scope.description,
-                Category: $scope.category
+                Category: $scope.category,
+                Email: $scope.email
             };
             postsService.submitNewPost(post).success(function(response) {
                 $state.go('posts');
