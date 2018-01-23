@@ -38,5 +38,15 @@ app.controller('postsController', [
         $scope.getSinglePost = function(id) {
             $state.go('edit-post', { id: id });
         }
+
+        $scope.deletePost = function(id) {
+            postsService.deletePost(id).
+                success(function() {
+                    $state.go($state.current, null, { reload: true });
+                }).error(function(error) {
+                    $scope.errorMessage = "Error while deleting the said post.";
+                });
+
+        }
     }
 ]);
