@@ -7,6 +7,7 @@ app.controller('postsController', [
     function ($scope, $state, $stateParams, postsService, NgTableParams, $filter, authService, categoriesService) {
 
         $scope.currentPost = {};
+        $scope.newPost = true;
         authService.fillAuthData();
         if (authService.authentication.isAuth) {
             $scope.email = authService.authentication.email;
