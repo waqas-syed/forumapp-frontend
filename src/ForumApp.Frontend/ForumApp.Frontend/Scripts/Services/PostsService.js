@@ -2,7 +2,7 @@
 
 app.factory('postsService', ['$http', '$q', 'globalService', function ($http, $q, globalService) {
     return {
-        getAllPosts: function (searchParameters) {
+        getAllPosts: function () {
             return $http.get(globalService.serverUrl + 'post')
                 .success(function (response) {
                     return response;
@@ -20,8 +20,8 @@ app.factory('postsService', ['$http', '$q', 'globalService', function ($http, $q
                     return error;
                 });
         },
-        submitNewPost: function(todo) {
-            return $http.post(globalService.serverUrl + 'post', todo)
+        submitNewPost: function(post) {
+            return $http.post(globalService.serverUrl + 'post', post)
                 .success(function (response) {
                     return response;
                 })
@@ -29,8 +29,8 @@ app.factory('postsService', ['$http', '$q', 'globalService', function ($http, $q
                     return error;
                 });
         },
-        updatePost: function (todo) {
-            return $http.put(globalService.serverUrl + 'post', todo)
+        updatePost: function (post) {
+            return $http.put(globalService.serverUrl + 'post', post)
                 .success(function (response) {
                     return response;
                 })
@@ -40,6 +40,15 @@ app.factory('postsService', ['$http', '$q', 'globalService', function ($http, $q
         },
         deletePost: function (id) {
             return $http.delete(globalService.serverUrl + 'post/' + id)
+                .success(function (response) {
+                    return response;
+                })
+                .error(function (error) {
+                    return error;
+                });
+        },
+        addNewComment: function (comment) {
+            return $http.post(globalService.serverUrl + 'post/' + comment.PostId + "/comment", comment)
                 .success(function (response) {
                     return response;
                 })

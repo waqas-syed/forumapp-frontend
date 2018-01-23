@@ -51,6 +51,13 @@
                             templateUrl: "/views/posts.html",
                             permissions: { redirectForNonLoggedInUser: true }
                     })
+                    .state("view-post",
+                        {
+                            url: "/view-post?id",
+                            controller: "postsController",
+                            templateUrl: "/views/view-post.html",
+                            permissions: { redirectForNonLoggedInUser: true }
+                        })
                     .state("add-post",
                         {
                             url: "/add-post",

@@ -1,0 +1,43 @@
+﻿
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a ui-sref="posts()" class="btn btn-warning btn-xs" data-title="Back"><span class="glyphicon glyphicon-arrow-left"></span></a></p></td>
+
+<h2 ng-bind="currentPost.Title"></h2>
+<hr style="color: black;"/>
+<p ng-bind="currentPost.Description"></p>
+
+<div class="row">
+    
+    <div class="col-md-8">
+        <div class="widget-area no-padding blank">
+            <div class="status-upload">
+                <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
+                <form ng-submit="addNewComment()">
+                    <textarea placeholder="What are your thoughts?" ng-model="commentText"></textarea>
+                    <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Comment</button>
+                </form>
+            </div><!-- Status Upload  -->
+        </div><!-- Widget Area -->
+    </div>
+        
+</div>
+<hr/>
+<div ng-repeat="comment in currentPost.Comments">
+    <div class="row">
+        <div class="col-sm-1">
+            <div class="thumbnail">
+                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+            </div><!-- /thumbnail -->
+        </div><!-- /col-sm-1 -->
+        <div class="col-sm-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong ng-bind="comment.AuthorEmail"></strong> <span class="text-muted">commented</span>
+                </div>
+                <div class="panel-body" ng-bind="comment.Text">
+                    
+                </div><!-- /panel-body -->
+            </div><!-- /panel panel-default -->
+        </div><!-- /col-sm-5 -->
+        <br />
+    </div>
+</div>
